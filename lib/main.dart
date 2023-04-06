@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './categories_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blue,
       ),
-      home:MyHomePage(),
+      home: CategorieScreen(),
     );
   }
 }
