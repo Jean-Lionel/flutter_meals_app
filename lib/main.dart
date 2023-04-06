@@ -13,9 +13,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Deal Meals',
       theme: ThemeData(
-        primaryColor: Colors.blue,
+        primaryColor: Colors.pink,
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.amber),
+        canvasColor: Color.fromARGB(224, 213, 213, 213),
+        fontFamily: 'Raleway',
+        textTheme: TextTheme(),
       ),
-      home: CategorieScreen(),
+      home: const CategorieScreen(),
     );
   }
 }
@@ -30,7 +34,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Meals Application"),),
+      appBar: AppBar(
+        title: const Text("Meals Application"),
+      ),
       body: const Center(
         child: Text('Hello World'),
       ),
