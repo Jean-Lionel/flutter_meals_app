@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import "./data/dummy_data.dart";
-import "./models/category.dart";
-import "category_item.dart";
+import "../data/dummy_data.dart";
+import "../models/category.dart";
+import "./../widgets/category_item.dart";
+import "../data/dummy_data.dart";
 
 class CategorieScreen extends StatelessWidget {
   static const String routeName = "/categories";
