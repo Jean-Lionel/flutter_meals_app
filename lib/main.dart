@@ -20,9 +20,11 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Raleway',
         textTheme: TextTheme(),
       ),
-      home: const CategorieScreen(),
+      //home: const CategorieScreen(),
+      initialRoute: '/',
       routes: {
-        '/categories-meals': (ctx) => CategoryMealScreen(),
+        '/': (_) => CategorieScreen(),
+        CategorieScreen.routeName: (ctx) => CategoryMealScreen(),
       },
     );
   }

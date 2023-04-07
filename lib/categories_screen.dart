@@ -4,6 +4,7 @@ import "./models/category.dart";
 import "category_item.dart";
 
 class CategorieScreen extends StatelessWidget {
+  static const String routeName = "/categories";
   const CategorieScreen({super.key});
 
   @override
@@ -13,10 +14,10 @@ class CategorieScreen extends StatelessWidget {
       body: GridView(
         padding: const EdgeInsets.all(20),
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 200,
+          maxCrossAxisExtent: 200,
           childAspectRatio: 3 / 2,
-        crossAxisSpacing: 20,
-        mainAxisSpacing: 20,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
         ),
         children: DUMMY_CATEGORIES
             .map((e) => CategoryItem(
