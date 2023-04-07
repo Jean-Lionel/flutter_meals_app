@@ -6,28 +6,35 @@ class CategoryItem extends StatelessWidget {
 
   CategoryItem(this.title, this.color);
 
+  void selectCategory() {}
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: const EdgeInsets.all(1.5),
-        child: Text(
-          title,
-          style: TextStyle(
-            fontSize: 20,
-            fontFamily: 'RobotoCondensed',
-            fontWeight: FontWeight.bold,
+    return InkWell(
+      onTap: selectCategory,
+      splashColor: Theme.of(context).primaryColor,
+      borderRadius: BorderRadius.circular(15),
+      child: Container(
+          padding: const EdgeInsets.all(1.5),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                color.withOpacity(0.7),
+                color,
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            borderRadius: BorderRadius.circular(15),
           ),
-        ),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              color.withOpacity(0.7),
-              color,
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-          borderRadius: BorderRadius.circular(15),
-        ));
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+              fontFamily: 'RobotoCondensed',
+              fontWeight: FontWeight.bold,
+            ),
+          )),
+    );
   }
 }
