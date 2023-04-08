@@ -16,10 +16,16 @@ class MyApp extends StatelessWidget {
       title: 'Deal Meals',
       theme: ThemeData(
         primaryColor: Colors.pink,
-        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.amber),
+        secondaryHeaderColor: Color.fromARGB(255, 249, 146, 180),
         canvasColor: Color.fromARGB(224, 213, 213, 213),
         fontFamily: 'Raleway',
-        textTheme: TextTheme(),
+        textTheme: const TextTheme(
+            titleLarge: TextStyle(
+          fontSize: 24,
+        )),
+        colorScheme: ColorScheme.fromSwatch()
+            .copyWith(secondary: Colors.amber)
+            .copyWith(secondary: Color.fromARGB(255, 88, 12, 38)),
       ),
       //home: const CategorieScreen(),
       initialRoute: '/',
@@ -28,26 +34,14 @@ class MyApp extends StatelessWidget {
         CategorieScreen.routeName: (ctx) => CategoryMealScreen(),
         MealDetails.routeName: (ctx) => MealDetails(),
       },
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Meals Application"),
-      ),
-      body: const Center(
-        child: Text('Hello World'),
-      ),
+      onGenerateRoute: (settings) {
+        print(settings.arguments);
+      },
+      onUnknownRoute: ((settings) {
+        print("Je suis en bonne du forme ");
+        // Comme 404 dans la programmation web
+        return MaterialPageRoute(builder: (_) => CategorieScreen());
+      }),
     );
   }
 }
