@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_meals_app/models/meal.dart';
+import '../models/meal.dart';
 import "../data/dummy_data.dart";
 
 class MealDetails extends StatelessWidget {
@@ -16,47 +16,77 @@ class MealDetails extends StatelessWidget {
           title: Text('${selectMeal.title}'),
           backgroundColor: Theme.of(context).primaryColor,
         ),
-        body: Column(
-          children: [
-            Container(
-              height: 300,
-              width: double.infinity,
-              child: Image.network(selectMeal.imageUrl),
-            ),
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Text(
-                'Ingredients',
-                style: Theme.of(context).textTheme.titleLarge,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: 300,
+                width: double.infinity,
+                child: Image.network(selectMeal.imageUrl),
               ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(
-                  color: Colors.grey,
-                ),
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
-              margin: EdgeInsets.all(10),
-              padding: EdgeInsets.all(10),
-              height: 200,
-              width: 300,
-              child: ListView.builder(
-                  itemBuilder: (ctx, index) => Card(
-                        color: Theme.of(context).secondaryHeaderColor,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 5,
-                            horizontal: 10,
+              barWidget(context, 'Ingredints'),
+              barListView(
+                ListView.builder(
+                    itemBuilder: (ctx, index) => Card(
+                          color: Theme.of(context).secondaryHeaderColor,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 5,
+                              horizontal: 10,
+                            ),
+                            child: Text(selectMeal.ingredients[index]),
                           ),
-                          child: Text(selectMeal.ingredients[index]),
                         ),
-                      ),
-                  itemCount: selectMeal.ingredients.length
+                    itemCount: selectMeal.ingredients.length),
               ),
-            ),
-          ],
+              barWidget(context, 'Steps'),
+              barListView(ListView.builder(
+                itemBuilder: (ctx, index) => Column(
+                  children: [
+                    ListTile(
+                      leading: CircleAvatar(child: Text('${index + 1}')),
+                      title: Text(selectMeal.steps[index]),
+                    ),
+                     const Divider(
+                      height: 10,
+                      thickness: 5,
+                      indent: 20,
+                      endIndent: 0,
+                      color: Colors.black12,
+                    ),
+                  ],
+                ),
+                itemCount: selectMeal.steps.length,
+              )),
+            ],
+          ),
         ));
+  }
+  
+  Widget barWidget(BuildContext context, String title) {
+    return Container(
+      padding: EdgeInsets.all(10),
+      child: Text(
+        title,
+        style: Theme.of(context).textTheme.titleLarge,
+      ),
+    );
+  }
+
+  Widget barListView(Widget child) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(
+          color: Colors.grey,
+        ),
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.all(10),
+      height: 150,
+      width: double.infinity,
+      child: child,
+    );
   }
 }
