@@ -17,8 +17,11 @@ class MyApp extends StatelessWidget {
       title: 'Deal Meals',
       theme: ThemeData(
         primaryColor: Colors.pink,
+        appBarTheme: const AppBarTheme(
+          color: Colors.pink,
+        ),
         secondaryHeaderColor: Color.fromARGB(255, 249, 146, 180),
-        canvasColor: Color.fromARGB(224, 213, 213, 213),
+        canvasColor: Color.fromARGB(221, 252, 241, 241),
         fontFamily: 'Raleway',
         textTheme: const TextTheme(
             titleLarge: TextStyle(
