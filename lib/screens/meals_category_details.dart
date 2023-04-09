@@ -63,9 +63,10 @@ class MealDetails extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print("Bonjour");
+          Navigator.of(context).pop(mealId);
         },
-        child: const Icon(Icons.delete),
+        child: Icon(Icons.delete, color: Theme.of(context).primaryColor),
+        foregroundColor: Colors.black12,
       ),
     );
   }
